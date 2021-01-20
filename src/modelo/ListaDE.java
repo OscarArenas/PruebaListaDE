@@ -131,8 +131,9 @@ public class ListaDE {
         return primerNodo == null;
     }
 
+    @Override
     public String toString() {
-        String cadena = "[";
+        String cadena = "";
 
         if (primerNodo != null) {
             NodoDE actual = primerNodo;
@@ -143,7 +144,7 @@ public class ListaDE {
             }
             cadena = cadena + actual.valor;
         }
-        return cadena + "]";
+        return "[" + cadena + "]";
     }
 
     private class NodoDE {
