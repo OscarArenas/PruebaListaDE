@@ -33,8 +33,8 @@ public class ListaDE {
         n = 0;
     }
 
-    public boolean agregar(double nuevoValor) {
-        NodoDE nuevoNodo = new NodoDE(nuevoValor);
+    public boolean agregar(double dato) {
+        NodoDE nuevoNodo = new NodoDE(dato);
 
         if (primerNodo != null) {
             nuevoNodo.anterior = ultimoNodo;
@@ -48,10 +48,10 @@ public class ListaDE {
         return true;
     }
 
-    public boolean agregar(int indice, double valor) {
+    public boolean agregar(int indice, double dato) {
         if (indice >= 0 && indice <= n) {
             if (indice == n) {
-                return agregar(valor);
+                return agregar(dato);
             } else {//Inserta al principio o entre dos nodos de la lista
                 NodoDE actual = primerNodo;
                 int i = 0;
@@ -61,7 +61,7 @@ public class ListaDE {
                 }
 
                 NodoDE anterior = actual.anterior;
-                NodoDE nuevoNodo = new NodoDE(valor);
+                NodoDE nuevoNodo = new NodoDE(dato);
 
                 if (anterior == null) {
                     nuevoNodo.siguiente = actual;
@@ -118,7 +118,7 @@ public class ListaDE {
                 indice--;
                 actual = actual.siguiente;
             }
-            return actual.valor;
+            return actual.dato;
         }
         throw new IndexOutOfBoundsException("No existe la posición en la ListaDE");
     }
@@ -139,34 +139,34 @@ public class ListaDE {
             NodoDE actual = primerNodo;
 
             while (actual.siguiente != null) {
-                cadena = cadena + actual.valor + ", ";
+                cadena = cadena + actual.dato + ", ";
                 actual = actual.siguiente;
             }
-            cadena = cadena + actual.valor;
+            cadena = cadena + actual.dato;
         }
         return "[" + cadena + "]";
     }
 
     private class NodoDE {
 
-        double valor;
+        double dato;
         NodoDE anterior;
         NodoDE siguiente;
 
-        public NodoDE(double valor) {
-            this.valor = valor;
+        public NodoDE(double dato) {
+            this.dato = dato;
             anterior = null;
             siguiente = null;
         }
 
-        public NodoDE(NodoDE anterior, double valor, NodoDE siguiente) {
-            this.valor = valor;
+        public NodoDE(NodoDE anterior, double dato, NodoDE siguiente) {
+            this.dato = dato;
             this.anterior = anterior;
             this.siguiente = siguiente;
         }
 
-        public NodoDE(NodoDE anterior, double valor) {
-            this.valor = valor;
+        public NodoDE(NodoDE anterior, double dato) {
+            this.dato = dato;
             this.anterior = anterior;
             siguiente = null;
         }
