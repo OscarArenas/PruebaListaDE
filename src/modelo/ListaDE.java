@@ -23,17 +23,19 @@ package modelo;
  */
 public class ListaDE {
 
+    // Campos
     private NodoDE primerNodo;
     private NodoDE ultimoNodo;
     private int n;
 
+    // Métodos
     public ListaDE() {
         primerNodo = null;
         ultimoNodo = null;
         n = 0;
     }
 
-    public boolean agregar(double dato) {
+    public void agregar(double dato) {
         NodoDE nuevoNodo = new NodoDE(dato);
 
         if (primerNodo != null) {
@@ -45,13 +47,12 @@ public class ListaDE {
 
         ultimoNodo = nuevoNodo;
         n++;
-        return true;
     }
 
     public boolean agregar(int indice, double dato) {
         if (indice >= 0 && indice <= n) {
             if (indice == n) {
-                return agregar(dato);
+                agregar(dato);
             } else {//Inserta al principio o entre dos nodos de la lista
                 NodoDE actual = primerNodo;
                 int i = 0;
@@ -74,8 +75,8 @@ public class ListaDE {
                     actual.anterior = nuevoNodo;
                 }
                 n++;
-                return true;
             }
+            return true;
         }
         return false;
     }
