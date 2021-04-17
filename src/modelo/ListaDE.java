@@ -82,46 +82,11 @@ public class ListaDE {
     }
 
     public boolean eliminar(int indice) {
-        if (indice >= 0 && indice < n) {
-            NodoDE actual = primerNodo;
-            int i = 0;
-
-            while (i < indice) {
-                i++;
-                actual = actual.siguiente;
-            }
-
-            if (actual == primerNodo) {
-                primerNodo = actual.siguiente;
-                if (primerNodo == null) {
-                    ultimoNodo = null;
-                } else {
-                    primerNodo.anterior = null;
-                }
-            } else if (actual == ultimoNodo) {
-                ultimoNodo = actual.anterior;
-                ultimoNodo.siguiente = null;
-            } else {
-                actual.siguiente.anterior = actual.anterior;
-                actual.anterior.siguiente = actual.siguiente;
-            }
-            n--;
-            return true;
-        }
         return false;
     }
 
     public double obtener(int indice) {
-        if (indice >= 0 && indice < n) {
-            NodoDE actual = primerNodo;
-
-            while (indice > 0) {
-                indice--;
-                actual = actual.siguiente;
-            }
-            return actual.dato;
-        }
-        throw new IndexOutOfBoundsException("No existe la posición en la ListaDE");
+        return 0;
     }
 
     public int tamanio() {
@@ -129,7 +94,7 @@ public class ListaDE {
     }
 
     public boolean esVacia() {
-        return primerNodo == null;
+        return false;
     }
 
     @Override
