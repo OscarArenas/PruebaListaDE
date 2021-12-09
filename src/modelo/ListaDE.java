@@ -50,38 +50,28 @@ public class ListaDE {
     }
 
     public boolean agregar(int indice, double dato) {
-        if (indice >= 0 && indice <= n) {
-            if (indice == n) {
-                agregar(dato);
-            } else {//Inserta al principio o entre dos nodos de la lista
-                NodoDE actual = primerNodo;
-                int i = 0;
-                while (i < indice) {
-                    i++;
-                    actual = actual.siguiente;
-                }
-
-                NodoDE anterior = actual.anterior;
-                NodoDE nuevoNodo = new NodoDE(dato);
-
-                if (anterior == null) {
-                    nuevoNodo.siguiente = actual;
-                    actual.anterior = nuevoNodo;
-                    primerNodo = nuevoNodo;
-                } else {
-                    nuevoNodo.anterior = anterior;
-                    nuevoNodo.siguiente = actual;
-                    anterior.siguiente = nuevoNodo;
-                    actual.anterior = nuevoNodo;
-                }
-                n++;
-            }
-            return true;
-        }
         return false;
     }
 
     public boolean eliminar(int indice) {
+        if (indice >= 0 && indice < n) {
+            NodoDE actual = primerNodo;
+
+            while (indice-- > 0) {
+                actual = actual.siguiente;
+            }
+
+            if (actual.anterior == null) {
+                primerNodo = actual.siguiente;
+            } else {
+                actual.anterior.siguiente = actual.siguiente;
+            }
+            if (actual == ultimoNodo) {
+                ultimoNodo = actual.anterior;
+            }
+            n--;
+            return true;
+        }
         return false;
     }
 
@@ -94,7 +84,7 @@ public class ListaDE {
     }
 
     public boolean esVacia() {
-        return false;
+        return n == 0;
     }
 
     @Override
