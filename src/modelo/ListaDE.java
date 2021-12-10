@@ -61,13 +61,19 @@ public class ListaDE {
                 actual = actual.siguiente;
             }
 
-            if (actual.anterior == null) {
-                primerNodo = actual.siguiente;
+            if (actual == primerNodo) {
+                primerNodo = primerNodo.siguiente;
+                if (primerNodo == null) {
+                    ultimoNodo = null;
+                } else {
+                    primerNodo.anterior = null;
+                }
+            } else if (actual == ultimoNodo) {
+                ultimoNodo = ultimoNodo.anterior;
+                ultimoNodo.siguiente = null;
             } else {
                 actual.anterior.siguiente = actual.siguiente;
-            }
-            if (actual == ultimoNodo) {
-                ultimoNodo = actual.anterior;
+                actual.siguiente.anterior = actual.anterior;
             }
             n--;
             return true;
