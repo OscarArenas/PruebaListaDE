@@ -33,11 +33,11 @@ public class PruebaListaDE {
         listaDE.agregar(-23);
         listaDE.agregar(57);
         listaDE.agregar(89);
-        listaDE.agregar(0, 99);
-        listaDE.agregar(4, 5);
-        listaDE.agregar(2, 7);
+        listaDE.agregar(91.28);
+        listaDE.agregar(45);
+        listaDE.agregar(7);
 
-        System.out.println("ListaDE");
+        System.out.println("ListaDE:");
         System.out.println(listaDE);
     }
 }
